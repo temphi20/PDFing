@@ -9,9 +9,10 @@ class Viewer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        // child: PDFManager.on(context).controller == null
-        //     ? const SizedBox.shrink()
-        //     : PdfView(controller: PDFManager.on(context).controller!),
-        );
+      // child: PdfView(options: options),
+      child: PDFManager.on(context).controller == null
+          ? const SizedBox.shrink()
+          : PdfView(controller: PDFManager.on(context).controller!),
+    );
   }
 }

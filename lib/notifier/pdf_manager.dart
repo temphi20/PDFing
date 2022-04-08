@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 // import 'package:fluent_ui/fluent_ui.dart';
 // import 'package:flutter/foundation.dart';
@@ -8,6 +9,8 @@ import 'package:pdfx/pdfx.dart';
 // import 'package:pdf/widgets.dart' as pw;
 import 'package:provider/provider.dart';
 
+import '../src/function.dart';
+
 class PDFManager extends ChangeNotifier {
   static PDFManager on(BuildContext context) =>
       Provider.of<PDFManager>(context);
@@ -16,15 +19,17 @@ class PDFManager extends ChangeNotifier {
 
   final String slash = Platform.isWindows ? "\u005c" : "\u002f";
   String path = "", name = "";
-  int? byte;
+  int? size;
   PdfController? controller;
   // pw.Document? pdf;
 
-  void getFile(String path, String name, int byte) async {
+  void getFile(String path, String name, int size, Uint8List bytes) async {
+    kPrint([path, name, size]);
     this.path = path;
     this.name = name;
-    this.byte = byte;
-    controller ??= PdfController(document: PdfDocument.openAsset(path));
+    this.size = size;
+
+    controller ??= PdfController(document: PdfDocument.openData(bytes));
     // doc = await PDFDocument.fromFile(File(path));
     // await Lock().synchronized(() {
     //   doc = PdfDocument.openFile(path);
