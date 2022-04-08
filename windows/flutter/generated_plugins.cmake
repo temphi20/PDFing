@@ -3,7 +3,10 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  desktop_window
+  flutter_acrylic
+  pdfx
+  system_theme
+  window_manager
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)
