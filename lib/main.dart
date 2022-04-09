@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -18,11 +20,12 @@ void main() async {
     windowManager.waitUntilReadyToShow().then((_) async {
       // windowManager.setMovable(true);
       await Future.wait([
-        // windowManager.setTitleBarStyle(TitleBarStyle.hidden,
-        //     windowButtonVisibility: false),
+        // windowManager.setTitleBarStyle(TitleBarStyle.normal,
+        //     windowButtonVisibility: true),
         // windowManager.setSize(const Size(755, 545)),
-        // windowManager.setMinimumSize(const Size(755, 545)),
-        windowManager.center(),
+        windowManager.setMinimumSize(const Size(755, 545)),
+        // windowManager.center(),
+        windowManager.setClosable(true),
         windowManager.setPreventClose(true),
         windowManager.setSkipTaskbar(false),
       ]);

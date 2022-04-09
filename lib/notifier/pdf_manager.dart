@@ -29,7 +29,7 @@ class PDFManager extends ChangeNotifier {
     this.name = name;
     this.size = size;
 
-    controller ??= PdfController(document: PdfDocument.openData(bytes));
+    controller = PdfController(document: PdfDocument.openData(bytes));
     // doc = await PDFDocument.fromFile(File(path));
     // await Lock().synchronized(() {
     //   doc = PdfDocument.openFile(path);

@@ -2,6 +2,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:pdfx/pdfx.dart';
 import 'package:provider/provider.dart';
+import 'package:system_theme/system_theme.dart';
+import 'package:window_manager/window_manager.dart';
 // import 'package:pdf/pdf.dart';
 // import 'package:pdf/widgets.dart' as pw;
 
@@ -40,13 +42,18 @@ class App extends StatelessWidget {
         androidOverscrollIndicator: AndroidOverscrollIndicator.glow,
       ),
       home: NavigationView(
-        // appBar: NavigationAppBar(
-        //   leading: Icon(FluentIcons.collapse_menu),
-        //   title: Text('PDFing'),
-        //   // automaticallyImplyLeading: false,
-        // ),
+        appBar: NavigationAppBar(
+          // leading: Icon(FluentIcons.collapse_menu),
+          title: Text(PDFManager.on(context).name),
+          // actions: IconButton(
+          //   icon: Icon(FluentIcons.a_a_d_logo),
+          //   onPressed: () {},
+          // )
+          // automaticallyImplyLeading: false,
+        ),
         pane: NavigationPane(
           // selected: 0,
+          displayMode: PaneDisplayMode.compact,
           scrollController: ScrollController(),
           onChanged: (idx) {
             switch (idx) {
