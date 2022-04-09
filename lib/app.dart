@@ -36,6 +36,9 @@ class App extends StatelessWidget {
     return FluentApp(
       title: 'Flutter Demo',
       theme: ThemeData(),
+      scrollBehavior: const ScrollBehavior(
+        androidOverscrollIndicator: AndroidOverscrollIndicator.glow,
+      ),
       home: NavigationView(
         // appBar: NavigationAppBar(
         //   leading: Icon(FluentIcons.collapse_menu),
