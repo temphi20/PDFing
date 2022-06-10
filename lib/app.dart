@@ -1,9 +1,5 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:pdfx/pdfx.dart';
-import 'package:provider/provider.dart';
-import 'package:system_theme/system_theme.dart';
-import 'package:window_manager/window_manager.dart';
 // import 'package:pdf/pdf.dart';
 // import 'package:pdf/widgets.dart' as pw;
 
@@ -20,7 +16,7 @@ class App extends StatelessWidget {
       withData: true,
       allowedExtensions: ['pdf'],
     );
-    if (result != null) {
+    if (result != null && result.files.length == 1) {
       final PlatformFile file = result.files[0];
       of.getFile(file.path!, file.name, file.size, file.bytes!);
       // final pdf = pw.Document();
@@ -38,9 +34,7 @@ class App extends StatelessWidget {
     return FluentApp(
       title: 'Flutter Demo',
       theme: ThemeData(),
-      scrollBehavior: const ScrollBehavior(
-        androidOverscrollIndicator: AndroidOverscrollIndicator.glow,
-      ),
+      scrollBehavior: const ScrollBehavior(),
       home: NavigationView(
         appBar: NavigationAppBar(
           // leading: Icon(FluentIcons.collapse_menu),
